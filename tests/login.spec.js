@@ -7,8 +7,7 @@ describe('Negative GitHub login', () => {
       await loginPage.navigateToLogin();
       await loginPage.fillLoginForm('test@gmail.com', '12445456');
       await loginPage.clickOnSignInButton();
-      await loginPage.waitForElement(loginPage.errorMessage);
-      const errorMessage = await loginPage.errorMessage.getText();
-      assert(errorMessage).to.equal('Invalid login or password');
+      const errorMessage = await loginPage.getErrorMessage();
+      assert.equal(errorMessage, 'Incorrect username or password.');
     });
 });
