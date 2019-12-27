@@ -4,7 +4,6 @@ global.mocha = require('mocha');
 
 exports.config = {
     runner: 'local',
-    sync: false,
     path: '/',
     waitforTimeout: 10000,
     connectionRetryTimeout: 90000,
