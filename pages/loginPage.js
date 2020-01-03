@@ -15,12 +15,12 @@ class LoginPage extends BasePage {
 
   async navigateToLogin() {
     await browser.url('https://github.com');
-    await this.waitForElement(this.loginPageLink, 5000);
+    await this.waitForElement(this.loginPageLink);
     return this.clickOnElement(this.loginPageLink);
   }
 
   async fillLoginForm(email, password) {
-    await this.waitForElement(this.emailField, 5000);
+    await this.waitForElement(this.emailField);
     await this.changeElementText(this.emailField, email);
     return this.changeElementText(this.passwordField, password);
   }
@@ -30,7 +30,7 @@ class LoginPage extends BasePage {
   }
 
   async getErrorMessage() {
-    await this.waitForElement(this.errorMessage, 5000);
+    await this.waitForElement(this.errorMessage);
     return this.errorMessage.then(el => el.getText());
   }
 }
