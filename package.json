@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Sample project to reproduce wdio bug",
   "scripts": {
-    "test-samples": "./node_modules/.bin/wdio wdio.conf.js"
+    "test-samples": "./node_modules/.bin/wdio wdio.conf.js",
+    "image-comparison": "./node_modules/.bin/wdio wdio.conf.js --suite imageComparison"
   },
   "devDependencies": {
     "@wdio/cli": "^5.10.3",

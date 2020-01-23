@@ -23,9 +23,19 @@ exports.config = {
     ],
     baseUrl: 'https://github.com',
     logLevel:  'debug',
-    specs: ['tests/*spec.js'],
+    specs: process.env.SPECS || ['tests/*.spec.js'],
+    suites: {
+      imageComparison: ['tests/image-comparison.spec.js']
+    },
     services: [
-        'chromedriver'
+        'chromedriver',
+        ['image-comparison',
+            {
+                baselineFolder: path.join(__dirname, './images/baseline'),
+                screenshotPath: path.join(__dirname, './images/screenshots'),
+                autoSaveBaseline: true
+            }
+        ]
     ],
     before: function(capabilities, specs) {
         browser.maximizeWindow();
