@@ -7,14 +7,14 @@ class LoginPage extends BasePage {
     super();
   }
 
-  get loginPageLink() { return browser.$('a[href=\'/login\']').then(el => el) }
-  get emailField() { return browser.$('input[name=\'login\']') }
-  get passwordField() { return browser.$('input[name=\'password\']') }
-  get signInBtn() { return browser.$('input[name=\'commit\']') }
-  get errorMessage() { return browser.$('.flash>.container') }
+  get loginPageLink() { return browser.$('a[href=\'/login\']').then(el => el); }
+  get emailField() { return browser.$('input[name=\'login\']'); }
+  get passwordField() { return browser.$('input[name=\'password\']'); }
+  get signInBtn() { return browser.$('input[name=\'commit\']'); }
+  get errorMessage() { return browser.$('.flash>.container'); }
 
   async navigateToLogin() {
-    await browser.url('https://github.com');
+    await this.navigateTo('https://github.com');
     await this.waitForElement(this.loginPageLink);
     return this.clickOnElement(this.loginPageLink);
   }

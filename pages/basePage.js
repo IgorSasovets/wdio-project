@@ -7,10 +7,11 @@ class BasePage {
   }
 
   async waitForElement(element, {timeout = 5000, retries = 10} = {}) {
+    const processedElement = typeof element === 'object' ? await element : element;
     let iteration = 0;
     do {
         try {
-            await browser.waitUntil(() => element.then(el => el.isDisplayed()), timeout);
+            await browser.waitUntil(() => processedElement.isDisplayed(), timeout);
             return;
         } catch (err) {
             iteration++;
@@ -21,13 +22,15 @@ class BasePage {
   }
 
   async clickOnElement(element) {
-    await this.waitForElement(element);
-    return element.then(el => el.click());
+    const processedElement = typeof element === 'object' ? await element : element;
+    await this.waitForElement(processedElement);
+    return processedElement.click();
   }
 
   async changeElementText(element, text) {
-    await this.waitForElement(element);
-    return element.then(el => el.setValue(text));
+    const processedElement = typeof element === 'object' ? await element : element;
+    await this.waitForElement(processedElement);
+    return processedElement.setValue(text);
   }
 }
 
