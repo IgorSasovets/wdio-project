@@ -3,16 +3,31 @@ const assert = require('assert');
 const loginPage = require('../pages/loginPage');
 const treshold = 1.0;
 
-describe('Angular material suite', () => {
+class TestCase {
+
+  constructor() {
+  }
+
+  get buttonsArray() { return $$('.text-center a'); }
+  get firstButton() { return $$('.text-center a').then(el => el[0]); }
+  get pageHeader() { return $('.homepage .hero'); }
+}
+
+describe.skip('Angular material suite', () => {
     it('Positive scenario', async() => {
-      await loginPage.navigateTo('https://angular-cbpbdt.stackblitz.io/');
-      const openModalButton = await $('ol .mat-raised-button');
-      await openModalButton.click();
-      const modalWindow = await $('.mat-dialog-container');
-      // Just to visualize
-      await browser.pause(3000);
-      await browser.saveElement(modalWindow, 'pickAnimalModal')
-      const percentage = await browser.checkElement(modalWindow, 'pickAnimalModal',
+      await browser.url('https://angularjs.org/');
+      const testCaseObj = new TestCase();
+      await loginPage.waitForElement(testCaseObj.buttonsArray.then(el => el[1]));
+      const test = await testCaseObj.buttonsArray;
+      console.log(test.length);
+      const logs = await browser.getLogs('browser');
+      console.log('======================LOGS==========================\n', logs);
+      const text = await testCaseObj.buttonsArray.then(el => el[1].getAttribute('innerText'));
+      assert.equal(text, 'DOWNLOAD ANGULARJS');
+      const firstElementText = await testCaseObj.firstButton.then(el => el.getAttribute('innerText'));
+      assert.equal(firstElementText, 'TRY THE NEW ANGULAR\nNEW');
+      await browser.saveElement(TestCase.pageHeader, 'angularJS');
+      const percentage = await browser.checkElement(TestCase.pageHeader, 'angularJS',
         {saveAboveTolerance: treshold, ignoreColors: true});
       assert.equal(percentage < treshold, true);
     });

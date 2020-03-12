@@ -7,11 +7,11 @@ class LoginPage extends BasePage {
     super();
   }
 
-  get loginPageLink() { return browser.$('a[href=\'/login\']').then(el => el); }
-  get emailField() { return browser.$('input[name=\'login\']'); }
-  get passwordField() { return browser.$('input[name=\'password\']'); }
-  get signInBtn() { return browser.$('input[name=\'commit\']'); }
-  get errorMessage() { return browser.$('.flash>.container'); }
+  get loginPageLink() { return $('a[href=\'/login\']').then(el => el); }
+  get emailField() { return $('input[name=\'login\']'); }
+  get passwordField() { return $('input[name=\'password\']'); }
+  get signInBtn() { return $('input[name=\'commit\']'); }
+  get errorMessage() { return $('.flash>div'); }
 
   async navigateToLogin() {
     await this.navigateTo('https://github.com');

@@ -6,7 +6,8 @@
   "rules": {
     "indent": ["error", 4],
     "func-names": "off",
-    "max-len": ["error", { "code": 122 }]
+    "max-len": ["error", { "code": 122 }],
+    "comma-dangle": ["error", "never"]
   },
   "plugins": ["wdio"],
   "env": {
