@@ -23,8 +23,8 @@ exports.config = {
       }
     ],
     baseUrl: 'https://github.com',
-    logLevel:  'debug',
-    specs: process.env.SPECS || ['tests/*.spec.js'],
+    logLevel: 'debug',
+    specs: [process.env.SPECS] || ['tests/*.spec.js'],
     suites: {
       imageComparison: ['tests/image-comparison.spec.js']
     },
