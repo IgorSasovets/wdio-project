@@ -2,7 +2,7 @@
 const assert = require('assert');
 const loginPage = require('../pages/loginPage');
 
-describe('Angular material suite', () => {
+describe.skip('Angular material suite', () => {
     it('Positive scenario', async() => {
       await loginPage.navigateTo('https://angular-cbpbdt.stackblitz.io/');
       const openModalButton = $('ol .mat-raised-button');
