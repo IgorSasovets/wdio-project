@@ -30,6 +30,7 @@
     "wdio-image-comparison-service": "~1.12.2"
   },
   "dependencies": {
+    "faker": "^4.1.0",
     "mocha": "~6.2.2"
   }
 }
