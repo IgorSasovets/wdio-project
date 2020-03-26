@@ -4,3 +4,4 @@ package-lock.json
 images/screenshots/
 .DS_Store
 images/.DS_Store
+.idea/
