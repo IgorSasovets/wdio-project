@@ -1,6 +1,5 @@
 /* eslint-disable class-methods-use-this */
 'use strict';
-
 class BasePage {
     navigateTo(url) {
         return browser.url(url);
