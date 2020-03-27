@@ -1,11 +1,12 @@
 /* eslint-disable class-methods-use-this */
 'use strict';
+
 class BasePage {
     navigateTo(url) {
         return browser.url(url);
     }
 
-    async waitForElement(element, { timeout = 5000, retries = 10 } = {}) {
+    async waitForElement(element, {timeout = 5000, retries = 10} = {}) {
         const processedElement = typeof element === 'object' ? await element : element;
         let iteration = 0;
         do {
